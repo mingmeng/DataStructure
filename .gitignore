@@ -1,0 +1,9 @@
+
+.idea/DataStructure.iml
+.idea/codeStyles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+CMakeLists.txt
+cmake-build-debug/
+main.cpp
