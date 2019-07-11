@@ -1,25 +1,10 @@
 //
 // Created by mingmeng on 2019/7/11.
 //
-/**
-* cstdio是将stdio.h的内容用C++头文件的形式表示出来。
-* stdio.h是C标准函数库中的头文件，即：standard buffered input&output。
-*提供基本的文字的输入输出流操作（包括屏幕和文件等）。
-*/
-
-/**
-*conio是Console Input/Output（控制台输入输出）的简写，其中定义了通过控制台进行数据输入和数据输出的函数，
-*主要是一些用户通过按键盘产生的对应操作，比如getch()()函数等等。
-*/
 #include <iostream>
 #include "LinkedList.h"
 
 using namespace std;
-
-struct Node {
-    int data;
-    Node *next;
-};
 
 // 创建单链表
 Node *creat() {
@@ -47,7 +32,6 @@ Node *creat() {
 
     head = head->next;
     p->next = NULL;
-    //cout << "\nFirst data of single linker is " << head->data << endl;
 
     return head;
 }
@@ -150,7 +134,6 @@ Node *ReverseInLoop(Node *head) {
 
 //递归实现单链表转置
 Node *ReserveInRecursion(Node *head) {
-    Node *temp;
     if (head == NULL || head->next == NULL) {
         return head;
     }
