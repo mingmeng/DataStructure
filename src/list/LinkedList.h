@@ -4,23 +4,23 @@
 
 #ifndef DATASTRUCTURE_LINKEDLIST_H
 #define DATASTRUCTURE_LINKEDLIST_H
-struct node {
+struct Node {
     int data;
-    node *next;
+    Node *next;
 };
 
-node *creat();
+Node *creat();
 
-int length(node *head);
+int length(Node *head);
 
-void printL(node *head);
+void printL(Node *head);
 
-node *insert(node *head, int num);
+Node *insert(Node *head, int num);
 
-node *del(node *head, int num);
+Node *del(Node *head, int num);
 
-node *ReverseInLoop(node *head);
+Node *ReverseInLoop(Node *head);
 
-node *ReserveInRecursion(node *head);
+Node *ReserveInRecursion(Node *head);
 
 #endif //DATASTRUCTURE_LINKEDLIST_H

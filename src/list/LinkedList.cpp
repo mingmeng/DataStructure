@@ -12,18 +12,19 @@
 *主要是一些用户通过按键盘产生的对应操作，比如getch()()函数等等。
 */
 #include <iostream>
+#include "LinkedList.h"
 
 using namespace std;
 
-struct node {
+struct Node {
     int data;
-    node *next;
+    Node *next;
 };
 
 // 创建单链表
-node *creat() {
-    node *head, *p;
-    head = new node;
+Node *creat() {
+    Node *head, *p;
+    head = new Node;
     p = head;
 
     int x, cycle = 1;
@@ -32,7 +33,7 @@ node *creat() {
         cin >> x;
 
         if (x != 0) {
-            node *s = new node;
+            Node *s = new Node;
             s->data = x;
             cout << "Input data : " << x << endl;
 
@@ -52,9 +53,9 @@ node *creat() {
 }
 
 // 单链表测长
-int length(node *head) {
+int length(Node *head) {
     int n = 0;
-    node *p = head;
+    Node *p = head;
 
     while (p != NULL) {
         p = p->next;
@@ -65,8 +66,8 @@ int length(node *head) {
 }
 
 // 单链表打印
-void printL(node *head) {
-    node *p = head;
+void printL(Node *head) {
+    Node *p = head;
 
     cout << "Single Linker data is " << endl;
     while (p != NULL) {
@@ -77,12 +78,12 @@ void printL(node *head) {
 }
 
 // 单链表插入
-node *insert(node *head, int num) {
-    node *p0, *p1, *p2;
+Node *insert(Node *head, int num) {
+    Node *p0, *p1, *p2;
     p1 = head;
 
-    p2 = new node;
-    p0 = new node; // 插入节点
+    p2 = new Node;
+    p0 = new Node; // 插入节点
     p0->data = num;// 插入数据
 
     while (p0->data > p1->data && p1->next != NULL) {
@@ -106,9 +107,9 @@ node *insert(node *head, int num) {
 }
 
 // 单链表删除
-node *del(node *head, int num) {
-    node *p1, *p2;
-    p2 = new node;
+Node *del(Node *head, int num) {
+    Node *p1, *p2;
+    p2 = new Node;
     p1 = head;
 
     while (num != p1->data && p1->next != NULL) {
@@ -132,14 +133,14 @@ node *del(node *head, int num) {
 }
 
 //链表转置 循环方式
-node *ReverseInLoop(node *head) {
+Node *ReverseInLoop(Node *head) {
     if (head == NULL || head->next == NULL)
         return head;
 
-    node *reverse = NULL;
-    node *cur = head;
+    Node *reverse = NULL;
+    Node *cur = head;
     while (cur != NULL) {
-        node *temp = cur;
+        Node *temp = cur;
         cur = cur->next;
         temp->next = reverse;
         reverse = temp;
@@ -148,8 +149,8 @@ node *ReverseInLoop(node *head) {
 }
 
 //递归实现单链表转置
-node *ReserveInRecursion(node *head) {
-    node *temp;
+Node *ReserveInRecursion(Node *head) {
+    Node *temp;
     if (head == NULL || head->next == NULL) {
         return head;
     } else {
@@ -163,7 +164,7 @@ node *ReserveInRecursion(node *head) {
 //测试代码
 //int main() {
 //    cout << "***create the single list***" << endl;
-//    node *head = creat();
+//    Node *head = creat();
 //    cout << endl;
 //
 //    cout << "***calculate the length of list***" << endl;
@@ -183,7 +184,7 @@ node *ReserveInRecursion(node *head) {
 //    printL(head);
 //    cout << endl;
 //
-//    cout << "**** delete the node ****" << endl;
+//    cout << "**** delete the Node ****" << endl;
 //    cout << "Please input the data for deleting operate : ";
 //    int outData;
 //    cin >> outData;
