@@ -153,12 +153,12 @@ Node *ReserveInRecursion(Node *head) {
     Node *temp;
     if (head == NULL || head->next == NULL) {
         return head;
-    } else {
-        temp = ReserveInRecursion(head->next);
-        temp->next = head;
-        head->next = NULL;
     }
-    return head;
+    Node *newHead = ReserveInRecursion(head->next);
+
+    head->next->next = head;
+    head->next = NULL;
+    return newHead;
 }
 
 //测试代码
