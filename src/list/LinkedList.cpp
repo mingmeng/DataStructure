@@ -6,33 +6,51 @@
 
 using namespace std;
 
-// 创建单链表
-Node *creat() {
-    Node *head, *p;
+//使用create方法创建的链表数据
+//自动化测试233
+int data[6] = {0, 1, 2, 3, 4, 5};
+
+// 尾插法创建单链表
+Node *tailInsertCreate() {
+    Node *head, *tail;
     head = new Node;
-    p = head;
+    tail = head;
 
-    int x, cycle = 1;
-    while (cycle) {
-        cout << "Please input the data for single linker : ";
-        cin >> x;
-
-        if (x != 0) {
+    int i = 0;
+    while (true) {
+        if (i < sizeof(data) / sizeof(int)) {
             Node *s = new Node;
-            s->data = x;
-            cout << "Input data : " << x << endl;
-
-            p->next = s;
-            p = s;
-        } else {
-            cycle = 0;
-            cout << "Input done! " << endl;
-        }
+            s->data = data[i++];
+            tail->next = s;
+            tail = s;
+        } else
+            break;
     }
 
     head = head->next;
-    p->next = NULL;
+    tail->next = NULL;
 
+    return head;
+}
+
+//头插法创建单链表
+Node *headInsertCreate() {
+    Node *head;
+    head = new Node;//创建头结点 此时头节点仅仅作为头指针来进行使用 并非第一个结点
+    int i = 0;
+
+    while (true) {
+        //此时数据使用的是来自全局变量数组的输入
+        if (i < sizeof(data) / sizeof(int)) {
+            Node *s = new Node;//创建临时结点存储数据
+            s->data = data[i++];//输入数据
+            s->next = head->next;//指针挪到头结点的下一个
+            head->next = s;//将头指针挪到下一个
+        } else
+            break;
+    }
+    //头指针挪到第一个结点
+    head = head->next;
     return head;
 }
 
@@ -54,11 +72,11 @@ void printL(Node *head) {
     Node *p = head;
 
     cout << "Single Linker data is " << endl;
+    int order = 1;
     while (p != NULL) {
-        printf("%d ", p->data);
+        cout << order++ << ": " << p->data << endl;
         p = p->next;
     }
-    printf("\n");
 }
 
 // 单链表插入
@@ -89,6 +107,7 @@ Node *insert(Node *head, int num) {
     }
     return head;
 }
+
 
 // 单链表删除
 Node *del(Node *head, int num) {
