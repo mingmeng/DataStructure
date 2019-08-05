@@ -77,6 +77,20 @@ Node *getNode(Node *head, int index) {
     }
 }
 
+//按照值查找结点
+Node *getNodeByValue(Node *head, int value) {
+    Node *p;
+    p = head;
+    if (p == NULL)
+        return NULL;
+    while (p->next != NULL) {
+        if (p->data == value)
+            return p;
+        p = p->next;
+    }
+    return NULL;
+}
+
 // 单链表测长
 int length(Node *head) {
     int n = 0;
@@ -137,36 +151,6 @@ Node *preInsert(Node *head, int index, int d) {
     }
     return head;
 }
-
-// 单链表插入
-Node *insert(Node *head, int num) {
-    Node *p0, *p1, *p2;
-    p1 = head;
-
-    p2 = new Node;
-    p0 = new Node; // 插入节点
-    p0->data = num;// 插入数据
-
-    while (p0->data > p1->data && p1->next != NULL) {
-        p2 = p1;
-        p1 = p1->next;// p0,p1和p2位置: p2->p1->p0
-    }
-
-    if (p0->data <= p1->data) {
-        if (p1 == head) {// 头部前段插入 p0和p1位置: p0->p1->...
-            head = p0;
-            p0->next = p1;
-        } else {// 插入中间节点 p0,p1和p2位置: p2-> p0 -> p1
-            p2->next = p0;
-            p0->next = p1;
-        }
-    } else {   // 尾部插入节点 p0,p1和p2位置: p2->p1->p0->NULL
-        p1->next = p0;
-        p0->next = NULL;
-    }
-    return head;
-}
-
 
 // 单链表删除
 Node *del(Node *head, int num) {

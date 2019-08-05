@@ -19,6 +19,8 @@ Node *backInsert(Node *head, int index, int d);
 
 Node *preInsert(Node *head, int index, int d);
 
+Node *getNodeByValue(Node *head, int value);
+
 int length(Node *head);
 
 void printL(Node *head);
