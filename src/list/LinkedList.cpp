@@ -59,15 +59,18 @@ Node *headInsertCreate() {
 Node *getNode(Node *head, int index) {
     if (index == 1)
         return head;
-    else if (index < 1)
+    else if (index < 1) {
+        cout << "illegal indices!" << endl;
         return NULL;
-    else {
+    } else {
         Node *n;
         n = head;
         int order = 1;
         while (order++ < index) {
-            if (n->next == NULL)
+            if (n->next == NULL) {
+                cout << "illegal indices!" << endl;
                 return NULL;
+            }
             n = n->next;
         }
         return n;
@@ -97,6 +100,42 @@ void printL(Node *head) {
         cout << order++ << ": " << p->data << endl;
         p = p->next;
     }
+}
+
+//后插
+Node *backInsert(Node *head, int index, int d) {
+    Node *n, *s;
+    s = new Node;
+
+    n = getNode(head, index);
+    if (n == nullptr) {
+        return head;
+    }
+
+    s->next = n->next;
+    s->data = d;
+    n->next = s;
+    return head;
+}
+
+//前插
+Node *preInsert(Node *head, int index, int d) {
+    Node *n, *s;
+    s = new Node;
+    s->data = d;
+
+    if (index == 1) {
+        s->next = head;
+        return s;
+    } else {
+        n = getNode(head, index - 1);
+        if (n == nullptr) {
+            return head;
+        }
+        s->next = n->next;
+        n->next = s;
+    }
+    return head;
 }
 
 // 单链表插入

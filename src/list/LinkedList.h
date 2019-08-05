@@ -15,6 +15,10 @@ Node *headInsertCreate();
 
 Node *getNode(Node *head, int index);
 
+Node *backInsert(Node *head, int index, int d);
+
+Node *preInsert(Node *head, int index, int d);
+
 int length(Node *head);
 
 void printL(Node *head);
