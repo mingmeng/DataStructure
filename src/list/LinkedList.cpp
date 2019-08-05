@@ -152,29 +152,19 @@ Node *preInsert(Node *head, int index, int d) {
     return head;
 }
 
-// 单链表删除
-Node *del(Node *head, int num) {
-    Node *p1, *p2;
-    p2 = new Node;
-    p1 = head;
+//索引值删除结点
+Node *delNodeByIndex(Node *head, int index) {
+    Node *n;
+    n = getNode(head, index - 1);
+    if (n != NULL)
+        n->next = n->next->next;
+    return head;
+}
 
-    while (num != p1->data && p1->next != NULL) {
-        p2 = p1;
-        p1 = p1->next;// p1和p2位置: p2->p1
-    }
-
-    if (num == p1->data) {
-        if (p1 == head)// 删除头节点
-        {
-            head = p1->next;
-            delete p1;
-        } else {
-            p2->next = p1->next;
-            delete p1;
-        }
-    } else {
-        cout << num << " could not been found in the current single linker!" << endl;
-    }
+//索引值删除结点
+Node *delNodeByNode(Node *head, Node *p) {
+    p->data = p->next->data;
+    p->next = p->next->next;
     return head;
 }
 
@@ -205,37 +195,3 @@ Node *ReserveInRecursion(Node *head) {
     head->next = NULL;
     return newHead;
 }
-
-//测试代码
-//int main() {
-//    cout << "***create the single list***" << endl;
-//    Node *head = creat();
-//    cout << endl;
-//
-//    cout << "***calculate the length of list***" << endl;
-//    int n = length(head);
-//    cout << "The length of input single linker is " << n << "." << endl;
-//    cout << endl;
-//
-//    cout << "***print the list***" << endl;
-//    printL(head);
-//    cout << endl;
-//
-//    cout << "****insert the node****" << endl;
-//    cout << "Please input the data for inserting operate : ";
-//    int inData;
-//    cin >> inData;
-//    head = insert(head,inData);
-//    printL(head);
-//    cout << endl;
-//
-//    cout << "**** delete the Node ****" << endl;
-//    cout << "Please input the data for deleting operate : ";
-//    int outData;
-//    cin >> outData;
-//    head = del(head, outData);
-//    printL(head);
-//    cout << endl;
-//
-//    return 0;
-//}

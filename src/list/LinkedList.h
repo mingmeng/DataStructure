@@ -21,13 +21,13 @@ Node *preInsert(Node *head, int index, int d);
 
 Node *getNodeByValue(Node *head, int value);
 
+Node *delNodeByIndex(Node *head, int index);
+
+Node *delNodeByNode(Node *head, Node *p);
+
 int length(Node *head);
 
 void printL(Node *head);
-
-Node *insert(Node *head, int num);
-
-Node *del(Node *head, int num);
 
 Node *ReverseInLoop(Node *head);
 
