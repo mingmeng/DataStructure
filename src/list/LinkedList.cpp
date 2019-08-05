@@ -54,6 +54,26 @@ Node *headInsertCreate() {
     return head;
 }
 
+//返回第index位置的指针
+// 1<=index<=length(list)
+Node *getNode(Node *head, int index) {
+    if (index == 1)
+        return head;
+    else if (index < 1)
+        return NULL;
+    else {
+        Node *n;
+        n = head;
+        int order = 1;
+        while (order++ < index) {
+            if (n->next == NULL)
+                return NULL;
+            n = n->next;
+        }
+        return n;
+    }
+}
+
 // 单链表测长
 int length(Node *head) {
     int n = 0;

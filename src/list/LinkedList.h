@@ -11,6 +11,10 @@ struct Node {
 
 Node *tailInsertCreate();
 
+Node *headInsertCreate();
+
+Node *getNode(Node *head, int index);
+
 int length(Node *head);
 
 void printL(Node *head);
@@ -23,6 +27,5 @@ Node *ReverseInLoop(Node *head);
 
 Node *ReserveInRecursion(Node *head);
 
-Node *headInsertCreate();
 
 #endif //DATASTRUCTURE_LINKEDLIST_H
