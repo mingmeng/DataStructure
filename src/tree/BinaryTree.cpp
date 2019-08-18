@@ -3,6 +3,8 @@
 //
 #include <iostream>
 #include <cstdlib>
+#include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -68,6 +70,95 @@ void postOrder(BiTNode *root) {
         postOrder(root->rChild);
         cout << root->data << " ";
     }
+}
+
+//非递归中序遍历
+//这里用到的栈直接使用了stl11里的stack
+void midOrder2(BiTNode *root) {
+    stack<BiTNode *> s;
+    BiTNode *p = root;
+    while (p || !s.empty()) {
+        if (p) {
+            s.push(p);
+            p = p->lChild;
+        } else {
+            p = s.top();
+            cout << p->data << " ";
+            s.pop();
+            p = p->rChild;
+        }
+    }
+}
+
+//前序遍历 非递归实现
+void preOrder2(BiTNode *root) {
+    stack<BiTNode *> s;
+    BiTNode *p = root;
+    while (p || !s.empty()) {
+        if (p) {
+            cout << p->data << " ";
+            s.push(p);
+            p = p->lChild;
+        } else {
+            p = s.top();
+            s.pop();
+            p = p->rChild;
+        }
+    }
+}
+
+void postOrder2(BiTNode *root) {
+
+}
+
+void levelOrder(BiTNode *root) {
+    queue<BiTNode *> q;
+    BiTNode *p;
+    q.push(root);
+    while (!q.empty()) {
+        p = q.front();
+        q.pop();
+        cout << p->data << " ";
+        if (p->lChild)
+            q.push(p->lChild);
+        if (p->rChild)
+            q.push(p->rChild);
+    }
+}
+
+//二叉树测试代码
+void binaryTreeTest() {
+    int preOrders[6] = {1, 2, 4, 6, 3, 5};
+    int midOrders[6] = {2, 6, 4, 1, 3, 5};
+    BiTree t = construct(preOrders, midOrders, sizeof(preOrders) / sizeof(preOrders[0]));
+
+    cout << "preorder:" << endl;
+    preOrder(t);
+    cout << endl;
+
+    cout << "preorder2:" << endl;
+    preOrder2(t);
+    cout << endl;
+
+    cout << "midorder:" << endl;
+    midOrder(t);
+    cout << endl;
+
+    cout << "midorder2:" << endl;
+    midOrder2(t);
+    cout << endl;
+
+    cout << "postorder:" << endl;
+    postOrder(t);
+    cout << endl;
+
+    cout << "postorder2:" << endl;
+    postOrder(t);
+    cout << endl;
+
+    cout << "level order:" << endl;
+    levelOrder(t);
+    cout << endl;
 }
 
 
