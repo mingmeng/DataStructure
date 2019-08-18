@@ -4,6 +4,7 @@
 #include <iostream>
 #include "LinkedList.h"
 
+
 using namespace std;
 
 //使用create方法创建的链表数据
