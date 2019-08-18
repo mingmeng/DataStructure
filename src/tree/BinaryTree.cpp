@@ -107,8 +107,26 @@ void preOrder2(BiTNode *root) {
     }
 }
 
-void postOrder2(BiTNode *root) {
-
+void postOrder2(BiTNode *root)     //非递归后序遍历
+{
+    stack<BiTNode *> s;
+    BiTNode *cur;                      //当前结点
+    BiTNode *pre = NULL;                 //前一次访问的结点
+    s.push(root);
+    while (!s.empty()) {
+        cur = s.top();
+        if ((cur->lChild == NULL && cur->rChild == NULL) ||
+            (pre != NULL && (pre == cur->lChild || pre == cur->rChild))) {
+            cout << cur->data << "";  //如果当前结点没有孩子结点或者孩子节点都已被访问过
+            s.pop();
+            pre = cur;
+        } else {
+            if (cur->rChild != NULL)
+                s.push(cur->rChild);
+            if (cur->lChild != NULL)
+                s.push(cur->lChild);
+        }
+    }
 }
 
 void levelOrder(BiTNode *root) {
@@ -149,6 +167,10 @@ void binaryTreeTest() {
     cout << endl;
 
     cout << "postorder:" << endl;
+    postOrder(t);
+    cout << endl;
+
+    cout << "postorder2:" << endl;
     postOrder(t);
     cout << endl;
 

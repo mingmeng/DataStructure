@@ -24,6 +24,8 @@ void preOrder2(BiTNode *root);
 
 void postOrder2(BiTNode *root);
 
+void levelOrder(BiTNode *root);
+
 BiTree construct(int *preOrder, int *midOrder, int len);
 
 #endif //DATASTRUCTURE_BINARYTREE_H
