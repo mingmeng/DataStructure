@@ -13,7 +13,6 @@ typedef struct BiTNode {
     struct BiTNode *lChild, *rChild;
 } BiTNode, *BiTree;
 
-
 BiTree construct(int *preOrder, int *midOrder, int len) {
     if (preOrder == NULL || midOrder == NULL || len <= 0)
         return NULL;
@@ -175,7 +174,7 @@ void binaryTreeTest() {
     cout << endl;
 
     cout << "postorder2:" << endl;
-    postOrder(t);
+    postOrder2(t);
     cout << endl;
 
     cout << "level order:" << endl;
