@@ -1,3 +1,4 @@
+#include "FastOrder.h"
 //
 // Created by mingmeng on 2020/2/27.
 //
@@ -8,13 +9,9 @@ int partition(int *arr,int left,int right){
             j--;
         while (arr[i]<=p&&i<j)
             i++;
-        int temp=arr[i];
-        arr[i]=arr[j];
-        arr[j]=temp;
+        swap(arr,i,j);
     }
-    int temp=arr[left];
-    arr[left]=arr[i];
-    arr[i]=temp;
+    swap(arr,left,i);
     return i;
 }
 
@@ -24,6 +21,12 @@ void fastSort(int *arr,int left,int right ){
         fastSort(arr,left,index-1);
         fastSort(arr,index+1,right);
     }
+}
+
+void swap(int *arr, int i, int j){
+    int temp=arr[i];
+    arr[i]=arr[j];
+    arr[j]=temp;
 }
 
 

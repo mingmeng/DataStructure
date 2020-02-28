@@ -177,7 +177,7 @@ void binaryTreeTest() {
     postOrder2(t);
     cout << endl;
 
-    cout << "level order:" << endl;
+    cout << "level sort:" << endl;
     levelOrder(t);
     cout << endl;
 }
